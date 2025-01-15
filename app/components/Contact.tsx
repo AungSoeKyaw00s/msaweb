@@ -32,7 +32,7 @@ export default function Contact() {
   ]
 
   return (
-    <section id="contact" className="relative flex min-h-screen items-center bg-black px-6">
+    <section id="contact" className="relative flex min-h-screen items-center bg-white px-6">
       <div className="mx-auto max-w-7xl">
         <div className={clsx(
           "flex flex-col items-center justify-center opacity-0",
@@ -41,8 +41,8 @@ export default function Contact() {
           {/* Section Title */}
           <div className='flex flex-col md:flex-row items-start justify-between gap-10 relative'>
             <div className="flex-1">
-              <h2 className="font-mono text-3xl text-white/80 mb-6">Contact Details</h2>
-              <p className="text-gray-400 leading-relaxed text-justify">
+              <h2 className="font-mono text-3xl text-black/80 mb-6">Contact Details</h2>
+              <p className="text-gray-800 leading-relaxed text-justify">
               The Myanmar Student Association (MSA) aims to foster a vibrant and supportive community for Myanmar students at UTS, 
               promoting cultural awareness and unity among its members. MSA serves as a platform for students to connect, celebrate 
               their heritage, and share their experiences, regardless of their background or interests.
@@ -66,7 +66,7 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={clsx(
-                      "transform text-slate-300 transition-all duration-200",
+                      "transform text-gray-900 transition-all duration-200",
                       link.hoverColor,
                       "hover:scale-110"
                     )}
@@ -78,8 +78,8 @@ export default function Contact() {
               </div>
 
               {/* Optional: Small text below icons */}
-              <p className="mt-4 font-mono text-sm text-slate-400 text-center">
-                Get in touch
+              <p className="mt-4 font-mono text-sm text-gray-900 text-center">
+                Get in touch.
               </p>
             </div>
           </div>

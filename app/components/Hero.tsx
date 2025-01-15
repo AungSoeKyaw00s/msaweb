@@ -10,7 +10,7 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative flex min-h-screen items-center bg-black px-6 pt-24">
+    <section className="relative flex min-h-screen items-center bg-white px-6 pt-24">
       <div className="mx-auto max-w-7xl">
         <div
           className={clsx(
@@ -18,7 +18,7 @@ export default function Hero() {
             isLoaded && "fade-in"
           )}
         >
-          <p className="font-mono text-5xl font-bold text-gray-200 sm:text-6xl lg:text-7xl">
+          <p className="font-mono text-5xl font-bold text-gray-900 sm:text-6xl lg:text-7xl">
             Myanmar Student Association          
           </p>
 
@@ -33,7 +33,7 @@ export default function Hero() {
             isLoaded && "fade-in stagger-1"
           )}>
             <a
-              href="#mission"
+              href="#team"
               className="inline-block rounded border border-red-600 px-7 py-4 font-mono text-red-600 transition-colors hover:bg-[#64ffda]/10"
             >
               Explore Us!

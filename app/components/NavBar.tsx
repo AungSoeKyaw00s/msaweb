@@ -16,7 +16,7 @@ export default function Navbar() {
   ]
 
   return (
-    <nav className="fixed top-0 z-50 w-full bg-black/80 px-6 py-4 backdrop-blur-sm">
+    <nav className="fixed top-0 z-50 w-full bg-white/80 px-6 py-4 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between">
         {/* Logo */}
         <Link
@@ -37,7 +37,7 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="group text-sm text-slate-300 transition-colors hover:text-red-600"
+                className="group text-sm text-gray-900 transition-colors hover:text-red-600"
               >
                 {item.name}
               </Link>
