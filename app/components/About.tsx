@@ -21,7 +21,7 @@ export default function About() {
                         The Myanmar Student Association (MSA) at UTS celebrates Burmese culture while fostering 
                         cultural exchange within the diverse university community. Our events, designed to bring 
                         people together, primarily cater to Burmese students but warmly welcome everyone. Whether 
-                        you're interested in exploring Burmese traditions, making new friends, or enjoying a vibrant
+                        you&apos;re interested in exploring Burmese traditions, making new friends, or enjoying a vibrant
                         social scene, MSA offers something for you. From semester welcomes and study nights to karaoke 
                         sessions, movie nights, and exciting day trips, our activities create opportunities for connection, 
                         unforgettable experiences, and cultural celebration. Join us and be part of a community where friendships thrive, and memories are made!
