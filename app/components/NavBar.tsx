@@ -9,6 +9,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   const navItems = [
+    { name: 'Home', href: '#' },
     { name: 'About', href: '#about' },
     { name: 'Team', href: '#team' },
     { name: 'Sponsors', href: '#sponsors' },
@@ -16,12 +17,12 @@ export default function Navbar() {
   ]
 
   return (
-    <nav className="fixed top-0 z-50 w-full bg-white/80 px-6 py-4 backdrop-blur-sm">
+    <nav className="fixed top-0 z-50 w-full bg-white lg:bg-white/80 px-6 py-4 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between">
         {/* Logo */}
         <Link
           href='#home'
-          className="group text-sm text-slate-300 transition-colors hover:text-red-600">
+          className="group text-sm text-slate-300 transition-colors hover:text-red-600 ">
         <Image
           src="/msa.jpg"
           width={50}
@@ -37,7 +38,7 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="group text-sm text-gray-900 transition-colors hover:text-red-600"
+                className="group font-medium text-gray-900 transition-colors hover:text-red-600 hover:underline"
               >
                 {item.name}
               </Link>
@@ -48,7 +49,7 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="text-slate-300 md:hidden"
+          className="text-slate-900 md:hidden"
         >
           <svg
             className="h-6 w-6"
@@ -69,7 +70,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <div
         className={clsx(
-          "absolute left-0 right-0 bg-black px-6 py-4 md:hidden",
+          "absolute left-0 right-0 bg-white px-6 py-4 md:hidden",
           isOpen ? "block" : "hidden"
         )}
       >
@@ -77,7 +78,7 @@ export default function Navbar() {
           <Link
             key={item.name}
             href={item.href}
-            className="block py-2 text-sm text-slate-300 transition-colors hover:text-red-600"
+            className="block py-2 text-sm text-slate-900 transition-colors hover:text-red-600"
             onClick={() => setIsOpen(false)}
           >
             {item.name}
