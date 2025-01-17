@@ -61,14 +61,14 @@ export default function About() {
             <div className="mx-auto max-w-7xl w-full">
                 <div
                     className={clsx(
-                        "space-y-8 md:space-y-12",
+                        "space-y-6 md:space-y-12",
                         "transform transition-all duration-1000 ease-out",
                         isVisible ? "opacity-100" : "opacity-0",
                         getTransformValue()
                     )}
                 >
                     <p className={clsx(
-                            "transform transition-all duration-1000 delay-300 ease-out w-full max-w-md font-semibold font-mono text-center text-3xl lg:text-left lg:max-w-lg lg:sticky lg:top-20 lg:text-5xl",
+                            "transform transition-all duration-1000 delay-300 ease-out w-full max-w-md font-medium font-mono text-left text-3xl lg:text-left lg:max-w-lg lg:sticky lg:top-20 lg:text-5xl",
                             isVisible 
                                 ? "opacity-100 scale-100" 
                                 : `opacity-0 ${scrollDirection === 'down' ? 'scale-95' : 'scale-105'}`)}>

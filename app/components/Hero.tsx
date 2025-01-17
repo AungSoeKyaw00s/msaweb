@@ -38,7 +38,7 @@ export default function Hero() {
             >
               <div className='mt-10'>
                 <p className="font-mono text-3xl text-white font-bold lg:text-5xl 2xl:text-6xl">
-                  The &quot;HOME&quot; away from home for Myanmar students        
+                  The &quot;HOME&quot; away from home for Myanmar students.        
                 </p>
                 <p className="font-mono font-semibold text-white text-right text-2xl lg:text-3xl 2xl:text-4xl">
                   - UTS Myanmar Student Association          
@@ -96,7 +96,7 @@ export default function Hero() {
               )}
             >
               <p className="font-mono text-2xl font-bold text-gray-900 sm:text-6xl 2xl:text-9xl">
-                Discover Your &quot;Home&quot; Away From Home        
+                Discover Your &quot;Home&quot; Away From Home.        
               </p>
               <p className="font-mono font-semibold text-wrap text-right text-gray-900 text-2xl 2xl:text-7xl">
                 - UTS Myanmar Student Association          
