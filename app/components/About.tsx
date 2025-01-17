@@ -56,7 +56,7 @@ export default function About() {
     return (
         <section 
             id="about" 
-            className="relative flex min-h-screen items-center bg-white px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20"
+            className="relative flex min-h-screen items-center pt-20 bg-white px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20"
         >
             <div className="mx-auto max-w-7xl w-full">
                 <div
@@ -67,6 +67,13 @@ export default function About() {
                         getTransformValue()
                     )}
                 >
+                    <p className={clsx(
+                            "transform transition-all duration-1000 delay-300 ease-out w-full max-w-md font-semibold font-mono text-center text-3xl lg:text-left lg:max-w-lg lg:sticky lg:top-20 lg:text-5xl",
+                            isVisible 
+                                ? "opacity-100 scale-100" 
+                                : `opacity-0 ${scrollDirection === 'down' ? 'scale-95' : 'scale-105'}`)}>
+                        About Us
+                    </p>
                     <div className='flex flex-col lg:flex-row lg:items-start lg:gap-12 items-center justify-between gap-8'>
                         <div className={clsx(
                             "transform transition-all duration-1000 delay-300 ease-out w-full max-w-md lg:max-w-lg lg:sticky lg:top-24",
@@ -96,9 +103,14 @@ export default function About() {
                         )}>
                             {/* Mobile version */}
                             <div className="lg:hidden">
-                                <p className="font-mono text-gray-900 text-base leading-relaxed text-justify">
-                                    Welcome to MSA at UTS! We&apos;re a vibrant community celebrating Burmese culture through exciting events and activities. From study sessions to cultural celebrations, we create spaces where friendships flourish and memories are made. Join us to experience the best of Burmese traditions and student life!
+                                <p className=" text-gray-900 text-lg leading-relaxed text-center mb-4">
+                                    Welcome to MSA at UTS!
                                 </p>
+                                <p className=" text-gray-900 text-base leading-relaxed text-pretty text-left">
+                                We&apos;re a vibrant community celebrating Burmese culture through exciting events and activities. 
+                                From study sessions to cultural celebrations, we create spaces where friendships flourish and memories are made. 
+                                Join us to experience the best of Burmese traditions and student life!
+                                </p> 
                                 <div className='text-center mt-16'>
 
                                     <a
@@ -137,7 +149,7 @@ export default function About() {
                                     
                                     {/* Main text and arrow */}
                                     <span className="relative z-10 flex items-center gap-3 text-red-600 transition-all duration-300 group-hover:text-white">
-                                        <span className="font-semibold tracking-wider">EXPLORE US</span>
+                                        <span className="font-semibold tracking-wider">JOIN US</span>
                                         
                                         {/* Visible arrow with animation */}
                                         <svg 

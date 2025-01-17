@@ -28,6 +28,7 @@ export default function Navbar() {
           width={50}
           height={50}
           alt="MSA"
+          className='rounded-xl'
         />
         </Link>
 

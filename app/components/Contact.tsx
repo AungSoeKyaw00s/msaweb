@@ -61,7 +61,7 @@ export default function Contact() {
     <section 
       id="contact" 
       ref={sectionRef}
-      className="relative flex min-h-screen items-center bg-white px-6"
+      className="relative flex min-h-screen items-center bg-white px-6 pt-8 lg:pt-0"
     >
       <div className="mx-auto max-w-7xl w-full">
         <div className="flex flex-col items-center justify-center">
