@@ -104,7 +104,7 @@ export default function Contact() {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transform text-gray-900 transition-all duration-300 hover:text-red-600 hover:scale-110"
+                    className="transform text-gray-900 transition-all duration-100 hover:text-red-600 hover:scale-110"
                     style={{
                       transform: `translateY(${isVisible ? '0' : '100%'})`,
                       opacity: isVisible ? 1 : 0,
