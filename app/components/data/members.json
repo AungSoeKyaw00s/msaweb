@@ -1,0 +1,94 @@
+{
+    "2024": {
+      "executives": [
+        {
+          "name": "Khine",
+          "role": "President",
+          "image": "/avatar.png"
+        },
+        {
+          "name": "Ye Swan",
+          "role": "Vice President",
+          "image": "/avatar.png"
+        },
+        {
+          "name": "Henry",
+          "role": "Secretary",
+          "image": "/avatar.png"
+        },
+        {
+          "name": "Leon",
+          "role": "Treasurer",
+          "image": "/avatar.png"
+        },
+        {
+            "name": "Lewis",
+            "role": "PR Director",
+            "image": "/avatar.png"
+          },
+        {
+          "name": "Hnin Eaindray Lwin",
+          "role": "Marketing Director",
+          "image": "/avatar.png"
+        },
+        {
+          "name": "Aung Soe Kyaw",
+          "role": "Events Director",
+          "image": "/avatar.png"
+        }
+      ],
+      "committee": [
+        {
+          "name": "Member",
+          "role": "Events",
+          "image": "/avatar.png"
+        }
+      ]
+    },
+    "2023": {
+      "executives": [
+        {
+            "name": "Aiden",
+            "role": "President",
+            "image": "/avatar.png"
+          },
+          {
+            "name": "Letyar",
+            "role": "Vice President",
+            "image": "/avatar.png"
+          },
+          {
+            "name": "Henry",
+            "role": "Secretary",
+            "image": "/avatar.png"
+          },
+          {
+            "name": "Leon",
+            "role": "Treasurer",
+            "image": "/avatar.png"
+          },
+          {
+              "name": "Khine",
+              "role": "PR Director",
+              "image": "/avatar.png"
+            },
+          {
+            "name": "Shin",
+            "role": "Marketing Director",
+            "image": "/avatar.png"
+          },
+          {
+            "name": "Scarlett",
+            "role": "Events Director",
+            "image": "/avatar.png"
+          }
+      ],
+      "committee": [
+        {
+          "name": "Member",
+          "role": "Events",
+          "image": "/avatar.png"
+        }
+      ]
+    }
+  }

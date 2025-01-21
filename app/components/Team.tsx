@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect, useState, useRef } from 'react';
 import { Tab, TabGroup, TabList } from '@headlessui/react';
+import members from './data/members.json';
 
 interface TeamMember {
   name: string;
@@ -17,65 +18,7 @@ interface TeamDataType {
   [key: string]: YearData;
 }
 
-const teamData: TeamDataType = {
-  "2024": {
-    executives: [
-      {
-        name: "Khine Min Than",
-        role: "President",
-        image: "/avatar.png",
-      },
-      {
-        name: "Ye Swan Yie",
-        role: "Vice President",
-        image: "/avatar.png",
-      },
-      {
-        name: "Thuta",
-        role: "Secretary",
-        image: "/avatar.png",
-      },
-      {
-        name: "Leon",
-        role: "Treasurer",
-        image: "/avatar.png",
-      },
-      {
-        name: "Hnin Eaindray Lwin",
-        role: "Marketing Director",
-        image: "/avatar.png",
-      },
-      {
-        name: "Aung Soe Kyaw",
-        role: "Events Director",
-        image: "/avatar.png",
-      },
-    ],
-    committee: [
-      {
-        name: "Member",
-        role: "Events",
-        image: "/avatar.png",
-      },
-    ]
-  },
-  "2023": {
-    executives: [
-      {
-        name: "Previous President",
-        role: "President",
-        image: "/avatar.png",
-      }
-    ],
-    committee: [
-      {
-        name: "Previous Coordinator",
-        role: "Events Coordinator",
-        image: "/avatar.png",
-      }
-    ]
-  }
-};
+const teamData: TeamDataType = members as TeamDataType;
 
 const years = ["2024", "2023"];
 
