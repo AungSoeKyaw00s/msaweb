@@ -94,7 +94,7 @@ export default function Sponsors() {
     <section 
       id="sponsors" 
       ref={sectionRef}
-      className="relative flex min-h-screen items-center bg-red-600 px-4 lg:px-6 py-16 overflow-hidden"
+      className="relative flex min-h-screen items-center bg-red-600 px-4 pt-24 lg:px-6 py-16 overflow-hidden"
     >
       {/* Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden">
