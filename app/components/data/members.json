@@ -135,6 +135,11 @@
           "image": "./team/liz.JPG"
         },
         {
+          "name": "Eaint",
+          "role": "Events",
+          "image": "./team/eaint.JPG"
+        },
+        {
           "name": "Lewis",
           "role": "Events",
           "image": "./team/lewis.JPG"
