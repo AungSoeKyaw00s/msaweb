@@ -24,36 +24,63 @@ const years = ["2024", "2023"];
 
 interface TeamMemberCardProps {
   member: TeamMember;
+  delay: number;
+  shouldAnimate: boolean;
 }
 
-const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => (
-  <div className="flex flex-col items-center p-4 space-y-2 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-    <img
-      src={member.image}
-      alt={member.name}
-      className="w-32 h-32 rounded-full object-cover"
-    />
-    <h3 className="text-lg font-semibold text-gray-800">{member.name}</h3>
-    <p className="text-sm text-gray-600">{member.role}</p>
-  </div>
-);
+const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member, delay, shouldAnimate }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  
+  return (
+    <div 
+      className={`flex flex-col items-center p-4 space-y-2 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-500
+      ${shouldAnimate ? (isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0') : 'translate-y-0 opacity-100'}`}
+      style={{ transitionDelay: `${shouldAnimate ? delay * 50 : 0}ms` }}
+    >
+      <img
+        src={member.image}
+        alt={member.name}
+        className="w-32 h-32 rounded-full object-cover"
+        onLoad={() => setIsLoaded(true)}
+        onError={() => setIsLoaded(true)}
+      />
+      <h3 className="text-lg font-semibold text-gray-800">{member.name}</h3>
+      <p className="text-sm text-gray-600">{member.role}</p>
+    </div>
+  );
+};
 
 export default function Team() {
+  // This state should be initialized to true during server-side rendering
+  // and then set to the correct value on client-side
+  const [isMounted, setIsMounted] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
   const [selectedYear, setSelectedYear] = useState<string>(years[0]);
 
+  // Add useEffect to handle client-side initialization
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    // Only run intersection observer logic when component is mounted on client
+    if (!isMounted) return;
+    
+    // Animation is only shown on the first load
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !hasAnimated) {
           setIsVisible(true);
-        } else {
-          setIsVisible(false);
+          // Set hasAnimated to true after the first animation
+          setTimeout(() => {
+            setHasAnimated(true);
+          }, 1000); // Adjust timing as needed
         }
       },
       {
-        threshold: 0.2,
+        threshold: 0.1,
         rootMargin: '50px'
       }
     );
@@ -67,7 +94,15 @@ export default function Team() {
         observer.unobserve(sectionRef.current);
       }
     }
-  }, []);
+  }, [hasAnimated, isMounted]);
+
+  // Different animation for mobile vs desktop
+  const getAnimationClass = () => {
+    if (!isVisible) return 'opacity-0';
+    
+    // Different animation based on screen size
+    return `opacity-100 transition-all duration-700 ease-out`;
+  };
 
   return (
     <section
@@ -76,8 +111,10 @@ export default function Team() {
       className="relative flex min-h-screen bg-white px-6 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20"
     >
       <div
-        className={`flex-1 transform transition-all duration-1000 ease-out
-          ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}
+        className={`flex-1 w-full ${isMounted ? getAnimationClass() : 'opacity-100'}`}
+        style={{ 
+          transform: isMounted && isVisible ? 'translateY(0)' : isMounted ? 'translateY(40px)' : 'translateY(0)',
+        }}
       >
         <div className="mx-auto max-w-7xl w-full space-y-12 m-20">
           <div className="text-center space-y-4">
@@ -118,7 +155,12 @@ export default function Team() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {teamData[selectedYear].executives.map((member, index) => (
-                <TeamMemberCard key={index} member={member} />
+                <TeamMemberCard 
+                  key={index} 
+                  member={member} 
+                  delay={index}
+                  shouldAnimate={isMounted && !hasAnimated}
+                />
               ))}
             </div>
           </section>
@@ -130,7 +172,12 @@ export default function Team() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {teamData[selectedYear].committee.map((member, index) => (
-                <TeamMemberCard key={index} member={member} />
+                <TeamMemberCard 
+                  key={index} 
+                  member={member} 
+                  delay={index}
+                  shouldAnimate={isMounted && !hasAnimated}
+                />
               ))}
             </div>
           </section>

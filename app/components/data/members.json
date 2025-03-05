@@ -4,44 +4,89 @@
         {
           "name": "Khine",
           "role": "President",
-          "image": "/avatar.png"
+          "image": "./team/khine.JPG"
         },
         {
           "name": "Ye Swan",
           "role": "Vice President",
-          "image": "/avatar.png"
+          "image": "./team/swan.JPG"
         },
         {
           "name": "Henry",
           "role": "Secretary",
-          "image": "/avatar.png"
+          "image": "./team/henry.JPG"
         },
         {
           "name": "Leon",
           "role": "Treasurer",
-          "image": "/avatar.png"
+          "image": "./team/leon.JPG"
         },
         {
             "name": "Lewis",
             "role": "PR Director",
-            "image": "/avatar.png"
+            "image": "./team/lewis.JPG"
           },
         {
-          "name": "Hnin Eaindray Lwin",
+          "name": "Helene",
           "role": "Marketing Director",
-          "image": "/avatar.png"
+          "image": "./team/helene.jpeg"
         },
         {
-          "name": "Aung Soe Kyaw",
+          "name": "Aung",
           "role": "Events Director",
-          "image": "/avatar.png"
+          "image": "./team/jono.JPG"
         }
       ],
       "committee": [
         {
-          "name": "Member",
+          "name": "Liz",
           "role": "Events",
-          "image": "/avatar.png"
+          "image": "./team/liz.JPG"
+        },
+        {
+          "name": "Eaint Myat Hmu",
+          "role": "Events",
+          "image": "./team/eaint.JPG"
+        },
+        {
+          "name": "Polly",
+          "role": "Events",
+          "image": "./team/polly.JPG"
+        },
+        {
+          "name": "Lily",
+          "role": "Events",
+          "image": "./team/lily.JPG"
+        },
+        {
+          "name": "Thoon Set",
+          "role": "Events",
+          "image": "./team/thoonset.jpeg"
+        },
+        {
+          "name": "Eric",
+          "role": "Marketing",
+          "image": "./team/eric.JPG"
+        },
+        {
+          "name": "Chris",
+          "role": "Marketing",
+          "image": "./team/chris.JPG"
+        },
+        {
+          "name": "Alyssa",
+          "role": "Marketing",
+          "image": "./team/alyssa.JPG"
+        },
+        {
+          "name": "Peter",
+          "role": "Marketing",
+          "image": "./team/peter.JPG"
+        },
+        {
+          "name": "Wendy",
+          "role": "Marketing",
+          "image": "./team/wendy.JPG"
         }
       ]
     },
@@ -60,17 +105,17 @@
           {
             "name": "Henry",
             "role": "Secretary",
-            "image": "/avatar.png"
+            "image": "./team/henry.JPG"
           },
           {
             "name": "Leon",
             "role": "Treasurer",
-            "image": "/avatar.png"
+            "image": "./team/leon.JPG"
           },
           {
               "name": "Khine",
               "role": "PR Director",
-              "image": "/avatar.png"
+              "image": "./team/khine.JPG"
             },
           {
             "name": "Shin",
@@ -85,9 +130,54 @@
       ],
       "committee": [
         {
-          "name": "Member",
+          "name": "Liz",
+          "role": "Events",
+          "image": "./team/liz.JPG"
+        },
+        {
+          "name": "Lewis",
+          "role": "Events",
+          "image": "./team/lewis.JPG"
+        },
+        {
+          "name": "Ye Swan",
+          "role": "Events",
+          "image": "./team/swan.JPG"
+        },
+        {
+          "name": "Cloud",
           "role": "Events",
           "image": "/avatar.png"
+        },
+        {
+          "name": "Max",
+          "role": "Events",
+          "image": "/avatar.png"
+        },
+        {
+          "name": "Eric",
+          "role": "Marketing",
+          "image": "./team/eric.JPG"
+        },
+        {
+          "name": "Coral",
+          "role": "Marketing",
+          "image": "/avatar.png"
+        },
+        {
+          "name": "Hein",
+          "role": "Marketing",
+          "image": "/avatar.png"
+        },
+        {
+          "name": "Peter",
+          "role": "Marketing",
+          "image": "./team/peter.JPG"
+        },
+        {
+          "name": "Wendy",
+          "role": "Marketing",
+          "image": "./team/wendy.JPG"
         }
       ]
     }

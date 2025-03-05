@@ -28,6 +28,13 @@ const sponsors: Sponsor[] = [
     description: 'Sun\'s Burmese Kitchen in Sydney offers authentic Burmese cuisine and supports the UTS Myanmar Student Society with discounts, providing an affordable spot for students to connect and enjoy traditional meals.',
     website: 'https://www.sunsburmesekitchen.com.au',
     isSVG: false
+  },
+  {
+    name: 'TikTok Now',
+    logo: '/tiktok.jpg',
+    description: 'TikTok Now connects UTS Myanmar students through creating a vibrant virtual community that strengthens the Myanmar Student Society\'s bonds beyond campus events while studying abroad in Sydney.',
+    website: 'https://now.tiktok.com',
+    isSVG: false
   }
 ]
 
@@ -120,7 +127,7 @@ export default function Sponsors() {
           </div>
 
           {/* Sponsors Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2  gap-6 lg:gap-8 w-full mb-8 lg:mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6 lg:gap-8 w-full mb-8 lg:mb-16">
             {sponsors.map((sponsor, index) => (
               <div
                 key={sponsor.name}
