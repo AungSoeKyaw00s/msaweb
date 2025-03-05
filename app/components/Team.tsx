@@ -168,7 +168,7 @@ export default function Team() {
           {/* General Committee Section */}
           <section className="space-y-6">
             <h2 className="text-3xl font-bold text-center text-gray-800">
-              General Committee
+              Sub-Committee
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {teamData[selectedYear].committee.map((member, index) => (
