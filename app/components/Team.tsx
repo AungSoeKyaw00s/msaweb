@@ -20,7 +20,7 @@ interface TeamDataType {
 
 const teamData: TeamDataType = members as TeamDataType;
 
-const years = ["2024", "2023"];
+const years = ["2025", "2024"];
 
 interface TeamMemberCardProps {
   member: TeamMember;
