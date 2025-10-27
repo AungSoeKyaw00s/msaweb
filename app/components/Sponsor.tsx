@@ -14,7 +14,8 @@ interface Sponsor {
   isSVG?: boolean // Flag to determine if the logo is an SVG component
 }
 
-const sponsors: Sponsor[] = [
+// Split sponsors into Present and Previous for the tabbed UI
+const presentSponsors: Sponsor[] = [
   {
     name: 'ActivateUTS',
     logo: Activatelogo, // Your imported SVG component
@@ -28,7 +29,10 @@ const sponsors: Sponsor[] = [
     description: 'Sun\'s Burmese Kitchen in Sydney offers authentic Burmese cuisine and supports the UTS Myanmar Student Society with discounts, providing an affordable spot for students to connect and enjoy traditional meals.',
     website: 'https://www.sunsburmesekitchen.com.au',
     isSVG: false
-  },
+  }
+]
+
+const previousSponsors: Sponsor[] = [
   {
     name: 'TikTok Now',
     logo: '/tiktok.jpg',
@@ -69,6 +73,7 @@ const LogoRenderer: React.FC<{ sponsor: Sponsor }> = ({ sponsor }) => {
 
 export default function Sponsors() {
   const [isVisible, setIsVisible] = useState<boolean>(false)
+  const [activeTab, setActiveTab] = useState<'present' | 'previous'>('present')
   const sectionRef = useRef<HTMLElement | null>(null)
   
   useEffect(() => {
@@ -126,9 +131,33 @@ export default function Sponsors() {
             </p>
           </div>
 
+          {/* Tabs */}
+          <div className="w-full flex items-center justify-center mb-6">
+            <div className="inline-flex rounded-xl bg-white/10 p-1 gap-4">
+              <button
+                onClick={() => setActiveTab('present')}
+                className={`px-4 py-2 rounded-lg text-sm font-mono transition-colors duration-200 ${activeTab === 'present' ? 'bg-white text-red-600' : 'text-white/80'}`}
+                aria-pressed={activeTab === 'present'}
+              >
+                Present
+              </button>
+              <button
+                onClick={() => setActiveTab('previous')}
+                className={`px-4 py-2 rounded-lg text-sm font-mono transition-colors duration-200 ${activeTab === 'previous' ? 'bg-white text-red-600' : 'text-white/80'}`}
+                aria-pressed={activeTab === 'previous'}
+              >
+                Previous
+              </button>
+            </div>
+          </div>
+
           {/* Sponsors Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6 lg:gap-8 w-full mb-8 lg:mb-16">
-            {sponsors.map((sponsor, index) => (
+          {/** choose active sponsors based on tab */}
+          {(() => {
+            const activeSponsors = activeTab === 'present' ? presentSponsors : previousSponsors
+            return (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2  gap-6 lg:gap-8 w-full mb-8 lg:mb-16">
+                {activeSponsors.map((sponsor, index) => (
               <div
                 key={sponsor.name}
                 className={`group bg-white/95 backdrop-blur-sm p-6 lg:p-8 rounded-xl lg:rounded-2xl shadow-xl transform transition-all duration-1000 ease-out hover:scale-105
@@ -164,8 +193,10 @@ export default function Sponsors() {
                   </a>
                 </div>
               </div>
-            ))}
-          </div>
+                ))}
+              </div>
+            )
+          })()}
 
           {/* Call to Action */}
           <div 

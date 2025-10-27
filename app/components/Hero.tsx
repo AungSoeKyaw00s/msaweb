@@ -11,7 +11,7 @@ export default function Hero() {
   }, [])
   
   return (
-    <section className="relative flex min-h-screen items-center bg-white px-6 pt-24">
+    <section className="relative flex min-h-screen md:justify-center items-center bg-white px-6 pt-24">
       <div className="hidden md:block relative mx-auto md:m-20 xl:m-16">
         {/* Yellow layer - bottom */}
         <div className="absolute inset-0 translate-x-8 translate-y-8 bg-yellow-400 rounded-3xl"></div>

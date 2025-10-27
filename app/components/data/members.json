@@ -1,4 +1,55 @@
 {
+    "2026": {
+      "executives": [
+        {
+          "name": "Wendy",
+          "role": "President",
+          "image": "./team/wendy.JPG"
+        },
+        {
+          "name": "Perter",
+          "role": "Vice President",
+          "image": "./team/peter.JPG"
+        },
+        {
+          "name": "Polly",
+          "role": "Secretary",
+          "image": "./team/polly.JPG"
+        },
+        {
+          "name": "Eaint",
+          "role": "Treasurer",
+          "image": "./team/eaint.JPG"
+        },
+        {
+          "name": "Henry",
+          "role": "Marketing Director",
+          "image": "./team/henry.JPG"
+        },
+        {
+          "name": "Lily",
+          "role": "Events Director",
+          "image": "./team/lily.JPG"
+        }
+      ],
+      "committee": [
+        {
+          "name": "Liz",
+          "role": "Events",
+          "image": "./team/liz.JPG"
+        },
+        {
+          "name": "Aung",
+          "role": "Events",
+          "image": "./team/jono.JPG"
+        },
+        {
+          "name": "Helene",
+          "role": "Events",
+          "image": "./team/helene.jpeg"
+        }
+      ]
+    },
     "2025": {
       "executives": [
         {
