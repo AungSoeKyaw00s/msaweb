@@ -54,9 +54,9 @@ export default function About() {
     };
 
     return (
-        <section 
-            id="about" 
-            className="relative flex min-h-screen items-center pt-20 bg-white px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20"
+        <section
+            id="about"
+            className="relative flex min-h-screen items-center pt-20 bg-white dark:bg-gray-950 px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 transition-colors duration-300"
         >
             <div className="mx-auto max-w-7xl w-full">
                 <div
@@ -68,9 +68,9 @@ export default function About() {
                     )}
                 >
                     <p className={clsx(
-                            "transform transition-all duration-1000 delay-300 ease-out w-full max-w-md font-medium font-mono text-left text-3xl lg:text-left lg:max-w-lg lg:sticky lg:top-20 lg:text-5xl",
-                            isVisible 
-                                ? "opacity-100 scale-100" 
+                            "transform transition-all duration-1000 delay-300 ease-out w-full max-w-md font-bold font-heading text-left text-3xl lg:text-left lg:max-w-lg lg:sticky lg:top-20 lg:text-5xl gradient-text",
+                            isVisible
+                                ? "opacity-100 scale-100"
                                 : `opacity-0 ${scrollDirection === 'down' ? 'scale-95' : 'scale-105'}`)}>
                         About Us
                     </p>
@@ -103,52 +103,52 @@ export default function About() {
                         )}>
                             {/* Mobile version */}
                             <div className="lg:hidden">
-                                <p className=" text-gray-900 text-lg leading-relaxed text-center mb-4">
+                                <p className="font-heading text-gray-900 dark:text-gray-100 text-lg font-semibold leading-relaxed text-center mb-4 transition-colors duration-300">
                                     Welcome to MSA at UTS!
                                 </p>
-                                <p className=" text-gray-900 text-base leading-relaxed text-pretty text-left">
-                                We&apos;re a vibrant community celebrating Burmese culture through exciting events and activities. 
-                                From study sessions to cultural celebrations, we create spaces where friendships flourish and memories are made. 
+                                <p className="font-sans text-gray-900 dark:text-gray-300 text-base leading-relaxed text-pretty text-left transition-colors duration-300">
+                                We&apos;re a vibrant community celebrating Burmese culture through exciting events and activities.
+                                From study sessions to cultural celebrations, we create spaces where friendships flourish and memories are made.
                                 Join us to experience the best of Burmese traditions and student life!
-                                </p> 
+                                </p>
                                 <div className='text-center mt-16'>
 
                                     <a
                                         href="https://www.activateuts.com.au/clubs/myanmar-students-association/"
-                                        className="inline-block rounded border border-red-600 px-7 py-4 font-mono text-red-600 transition-colors hover:shadow-2xl"
+                                        className="inline-block rounded-xl border-2 border-red-600 dark:border-red-500 px-7 py-4 font-heading font-semibold text-red-600 dark:text-red-500 transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/50 hover:bg-red-600 hover:text-white dark:hover:bg-red-500 hover:scale-105 ripple-effect"
                                         >
                                         Join Us!
-                                    </a> 
+                                    </a>
                                 </div>
                             </div>
 
                             {/* Desktop version */}
                             <div className="hidden lg:block">
-                                <p className="font-mono text-gray-900 text-lg leading-relaxed text-justify">
+                                <p className="font-sans text-gray-900 dark:text-gray-200 text-lg leading-relaxed text-justify transition-colors duration-300">
                                     The Myanmar Student Association (MSA) at UTS celebrates Burmese culture while fostering
                                     cultural exchange within the diverse university community. Our events, designed to bring
                                     people together, primarily cater to Burmese students but warmly welcome everyone.
                                 </p>
-                                <p className="font-mono text-gray-900 text-lg leading-relaxed text-justify mt-6">
+                                <p className="font-sans text-gray-900 dark:text-gray-200 text-lg leading-relaxed text-justify mt-6 transition-colors duration-300">
                                     Whether you&apos;re interested in exploring Burmese traditions, making new friends, or enjoying a vibrant
                                     social scene, MSA offers something for you. From semester welcomes and study nights to karaoke
                                     sessions, movie nights, and exciting day trips, our activities create opportunities for connection,
                                     unforgettable experiences, and cultural celebration.
                                 </p>
-                                <p className="font-mono text-gray-900 text-lg leading-relaxed text-justify mt-6 mb-4">
+                                <p className="font-sans text-gray-900 dark:text-gray-200 text-lg leading-relaxed text-justify mt-6 mb-4 transition-colors duration-300">
                                     Join us and be part of a community where friendships thrive, and memories are made!
                                 </p>
-                                
+
                                 <div className="md:text-center lg:m-10">
                                     <a
                                     href="https://www.activateuts.com.au/clubs/myanmar-students-association/"
-                                    className="group relative inline-flex items-center overflow-hidden rounded-2xl border-2 border-red-600 bg-white px-8 py-4 font-mono transition-all duration-300"
+                                    className="group relative inline-flex items-center overflow-hidden rounded-2xl border-2 border-red-600 dark:border-red-500 bg-white dark:bg-gray-900 px-8 py-4 font-heading font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-red-500/50"
                                     >
                                     {/* Particle fill effect */}
                                     <span className="absolute left-1 top-1 h-0 w-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-600 transition-all duration-500 ease-out group-hover:h-[400%] group-hover:w-[400%]" />
                                     
                                     {/* Main text and arrow */}
-                                    <span className="relative z-10 flex items-center gap-3 text-red-600 transition-all duration-300 group-hover:text-white">
+                                    <span className="relative z-10 flex items-center gap-3 text-red-600 dark:text-red-500 transition-all duration-300 group-hover:text-white">
                                         <span className="font-semibold tracking-wider">JOIN US</span>
                                         
                                         {/* Visible arrow with animation */}

@@ -32,20 +32,20 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member, delay, shouldAn
   const [isLoaded, setIsLoaded] = useState(false);
   
   return (
-    <div 
-      className={`flex flex-col items-center p-4 space-y-2 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-500
+    <div
+      className={`flex flex-col items-center p-4 space-y-2 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg hover:shadow-red-500/20 transition-all duration-500 border border-transparent dark:border-gray-700
       ${shouldAnimate ? (isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0') : 'translate-y-0 opacity-100'}`}
       style={{ transitionDelay: `${shouldAnimate ? delay * 50 : 0}ms` }}
     >
       <img
         src={member.image}
         alt={member.name}
-        className="w-32 h-32 rounded-full object-cover"
+        className="w-32 h-32 rounded-full object-cover ring-2 ring-gray-200 dark:ring-gray-600"
         onLoad={() => setIsLoaded(true)}
         onError={() => setIsLoaded(true)}
       />
-      <h3 className="text-lg font-semibold text-gray-800">{member.name}</h3>
-      <p className="text-sm text-gray-600">{member.role}</p>
+      <h3 className="text-lg font-semibold font-heading text-gray-800 dark:text-gray-100 transition-colors duration-300">{member.name}</h3>
+      <p className="text-sm font-sans text-gray-600 dark:text-gray-400 transition-colors duration-300">{member.role}</p>
     </div>
   );
 };
@@ -108,35 +108,35 @@ export default function Team() {
     <section
       id="team"
       ref={sectionRef}
-      className="relative flex min-h-screen bg-white px-6 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20"
+      className="relative flex min-h-screen bg-white dark:bg-gray-950 px-6 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 transition-colors duration-300"
     >
       <div
         className={`flex-1 w-full ${isMounted ? getAnimationClass() : 'opacity-100'}`}
-        style={{ 
+        style={{
           transform: isMounted && isVisible ? 'translateY(0)' : isMounted ? 'translateY(40px)' : 'translateY(0)',
         }}
       >
         <div className="mx-auto max-w-7xl w-full space-y-12 m-20">
           <div className="text-center space-y-4">
-            <h1 className="text-4xl font-bold text-gray-900">
+            <h1 className="text-4xl font-bold font-heading gradient-text transition-colors duration-300">
               Meet Our Team
             </h1>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl font-sans text-gray-600 dark:text-gray-400 transition-colors duration-300">
               The dedicated individuals behind UTS Myanmar Students Association
             </p>
           </div>
 
           {/* Year selection tabs */}
           <TabGroup>
-            <TabList className="flex p-1 space-x-1 bg-red-600 rounded-xl max-w-md mx-auto">
+            <TabList className="flex p-1 space-x-1 bg-red-600 dark:bg-red-700 rounded-xl max-w-md mx-auto transition-colors duration-300">
               {years.map((year) => (
                 <Tab
                   key={year}
                   className={({ selected }) =>
-                    `w-full py-2.5 text-sm font-medium leading-5 text-black rounded-lg
+                    `w-full py-2.5 text-sm font-medium leading-5 text-black rounded-lg transition-all duration-300
                     ${
                       selected
-                        ? 'bg-white shadow'
+                        ? 'bg-white dark:bg-gray-800 dark:text-white shadow'
                         : 'hover:bg-white/[0.12] text-white'
                     }`
                   }
@@ -150,10 +150,10 @@ export default function Team() {
 
           {/* Executives Section */}
           <section className="space-y-6">
-            <h2 className="text-3xl font-bold text-center text-gray-800">
+            <h2 className="text-3xl font-bold font-heading text-center text-gray-800 dark:text-gray-200 transition-colors duration-300">
               Executive Committee
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {teamData[selectedYear].executives.map((member, index) => (
                 <TeamMemberCard 
                   key={index} 
@@ -167,10 +167,10 @@ export default function Team() {
 
           {/* General Committee Section */}
           <section className="space-y-6">
-            <h2 className="text-3xl font-bold text-center text-gray-800">
+            <h2 className="text-3xl font-bold font-heading text-center text-gray-800 dark:text-gray-200 transition-colors duration-300">
               Sub-Committee
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {teamData[selectedYear].committee.map((member, index) => (
                 <TeamMemberCard 
                   key={index} 
