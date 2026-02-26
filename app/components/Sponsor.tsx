@@ -115,6 +115,7 @@ const LogoRenderer: React.FC<{ sponsor: Sponsor; compact?: boolean }> = ({ spons
 export default function Sponsors() {
   const [isVisible, setIsVisible] = useState<boolean>(false)
   const [activeTab, setActiveTab] = useState<'present' | 'previous'>('present')
+  const [selectedSponsor, setSelectedSponsor] = useState<Sponsor | null>(null)
   const sectionRef = useRef<HTMLElement | null>(null)
   
   useEffect(() => {
@@ -209,40 +210,136 @@ export default function Sponsors() {
                 {/* Mobile: minimal logo grid */}
                 <div className="grid grid-cols-3 gap-4 md:hidden">
                   {activeSponsors.map((sponsor, index) => (
-                    <a
+                    <div
                       key={sponsor.name}
-                      href={sponsor.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex items-center justify-center rounded-2xl p-3 aspect-square shadow-sm
-                        transition-all duration-300 active:scale-90
-                        ${sponsor.isSVG ? 'bg-gray-900' : 'bg-white'}
+                      className={`flex flex-col items-center gap-2 transition-all duration-500
                         ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
                       style={{ transitionDelay: `${index * 80}ms` }}
                     >
-                      {sponsor.isSVG ? (
-                        (() => {
-                          const SVGComponent = sponsor.logo as React.ComponentType
-                          return (
-                            <div className="w-full flex items-center justify-center">
-                              <SVGComponent />
-                            </div>
-                          )
-                        })()
-                      ) : (
-                        <div className="relative w-full h-full">
-                          <Image
-                            src={sponsor.logo as string}
-                            alt={sponsor.name}
-                            fill
-                            className="object-contain"
-                            sizes="33vw"
-                          />
-                        </div>
-                      )}
-                    </a>
+                      {/* Logo tile */}
+                      <div className={`w-full aspect-square flex items-center justify-center rounded-2xl p-3 shadow-sm
+                        ${sponsor.isSVG ? 'bg-gray-900' : 'bg-white'}`}>
+                        {sponsor.isSVG ? (
+                          (() => {
+                            const SVGComponent = sponsor.logo as React.ComponentType
+                            return (
+                              <div className="w-full flex items-center justify-center">
+                                <SVGComponent />
+                              </div>
+                            )
+                          })()
+                        ) : (
+                          <div className="relative w-full h-full">
+                            <Image
+                              src={sponsor.logo as string}
+                              alt={sponsor.name}
+                              fill
+                              className="object-contain"
+                              sizes="33vw"
+                            />
+                          </div>
+                        )}
+                      </div>
+                      {/* Learn more button */}
+                      <button
+                        onClick={() => setSelectedSponsor(sponsor)}
+                        className="w-full text-xs font-heading font-semibold text-white/80 bg-white/10 border border-white/20 rounded-lg py-1.5 active:scale-95 transition-all duration-200"
+                      >
+                        Learn more
+                      </button>
+                    </div>
                   ))}
                 </div>
+
+                {/* Mobile modal */}
+                {selectedSponsor && (
+                  <div
+                    className="fixed inset-0 z-50 flex items-end md:hidden"
+                    onClick={() => setSelectedSponsor(null)}
+                  >
+                    {/* Backdrop */}
+                    <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+                    {/* Sheet */}
+                    <div
+                      className="relative w-full bg-white dark:bg-gray-900 rounded-t-3xl px-6 pt-5 pb-10 shadow-2xl"
+                      onClick={e => e.stopPropagation()}
+                    >
+                      {/* Drag handle */}
+                      <div className="w-10 h-1 bg-gray-300 dark:bg-gray-600 rounded-full mx-auto mb-5" />
+
+                      {/* Close */}
+                      <button
+                        onClick={() => setSelectedSponsor(null)}
+                        className="absolute top-4 right-5 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
+                        aria-label="Close"
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+
+                      {/* Logo + name */}
+                      <div className="flex items-center gap-4 mb-5">
+                        <div className={`relative w-14 h-14 rounded-xl shrink-0 flex items-center justify-center p-2 ${selectedSponsor.isSVG ? 'bg-gray-900' : 'bg-gray-100 dark:bg-gray-800'}`}>
+                          {selectedSponsor.isSVG ? (
+                            (() => {
+                              const SVGComponent = selectedSponsor.logo as React.ComponentType
+                              return <SVGComponent />
+                            })()
+                          ) : (
+                            <Image src={selectedSponsor.logo as string} alt={selectedSponsor.name} fill className="object-contain p-2" sizes="56px" />
+                          )}
+                        </div>
+                        <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-white">{selectedSponsor.name}</h3>
+                      </div>
+
+                      {/* Description */}
+                      <p className="font-sans text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                        {selectedSponsor.description}
+                      </p>
+
+                      {/* Location */}
+                      {selectedSponsor.location && (
+                        <p className="font-sans text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1.5 mb-4">
+                          <svg className="w-3.5 h-3.5 shrink-0 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                          </svg>
+                          {selectedSponsor.location}
+                        </p>
+                      )}
+
+                      {/* Benefits */}
+                      {selectedSponsor.benefits && selectedSponsor.benefits.length > 0 && (
+                        <div className="mb-6">
+                          <p className="font-sans text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">
+                            Show digital membership for:
+                          </p>
+                          <ul className="space-y-1.5">
+                            {selectedSponsor.benefits.map((benefit, i) => (
+                              <li key={i} className="flex items-center gap-2 text-sm font-sans text-gray-700 dark:text-gray-300">
+                                <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
+                                {benefit}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {/* CTA */}
+                      <a
+                        href={selectedSponsor.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 w-full py-3 bg-red-600 text-white rounded-xl font-heading font-semibold text-sm active:scale-95 transition-all duration-200"
+                      >
+                        Visit Website
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                )}
 
                 {/* Desktop: full detail cards */}
                 <div className={`hidden md:grid gap-8 lg:gap-10 w-full ${
