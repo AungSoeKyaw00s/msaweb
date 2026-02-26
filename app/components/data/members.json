@@ -34,19 +34,34 @@
       ],
       "committee": [
         {
-          "name": "Liz",
+          "name": "Khant Phone Htet",
           "role": "Events",
-          "image": "./team/liz.JPG"
+          "image": "./avatar.png"
+        },
+        {
+          "name": "Eaint",
+          "role": "Events",
+          "image": "./avatar.png"
+        },
+        {
+          "name": "Grace",
+          "role": "Events",
+          "image": "./avatar.png"
+        },
+        {
+          "name": "Alyssa",
+          "role": "Marketing",
+          "image": "./team/alyssa.JPG"
+        },
+        {
+          "name": "Wahso",
+          "role": "Marketing",
+          "image": "./avatar.png"
         },
         {
           "name": "Aung",
-          "role": "Events",
-          "image": "./team/jono.JPG"
-        },
-        {
-          "name": "Helene",
-          "role": "Events",
-          "image": "./team/helene.jpeg"
+          "role": "General",
+          "image": "./team/aung.JPG"
         }
       ]
     },
@@ -85,7 +100,7 @@
         {
           "name": "Aung",
           "role": "Events Director",
-          "image": "./team/jono.JPG"
+          "image": "./team/aung.JPG"
         }
       ],
       "committee": [

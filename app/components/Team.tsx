@@ -165,21 +165,32 @@ export default function Team() {
             </div>
           </section>
 
-          {/* General Committee Section */}
-          <section className="space-y-6">
+          {/* Sub-Committee Section */}
+          <section className="space-y-10">
             <h2 className="text-3xl font-bold font-heading text-center text-gray-800 dark:text-gray-200 transition-colors duration-300">
               Sub-Committee
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {teamData[selectedYear].committee.map((member, index) => (
-                <TeamMemberCard 
-                  key={index} 
-                  member={member} 
-                  delay={index}
-                  shouldAnimate={isMounted && !hasAnimated}
-                />
-              ))}
-            </div>
+            {(['Events', 'Marketing', 'General'] as const).map((group) => {
+              const groupMembers = teamData[selectedYear].committee.filter(m => m.role === group);
+              if (groupMembers.length === 0) return null;
+              return (
+                <div key={group} className="space-y-4">
+                  <h3 className="text-xl font-semibold font-heading text-center text-gray-600 dark:text-gray-400 transition-colors duration-300">
+                    {group}
+                  </h3>
+                  <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    {groupMembers.map((member, index) => (
+                      <TeamMemberCard
+                        key={index}
+                        member={member}
+                        delay={index}
+                        shouldAnimate={isMounted && !hasAnimated}
+                      />
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </section>
         </div>
       </div>

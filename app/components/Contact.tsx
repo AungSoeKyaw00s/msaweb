@@ -71,7 +71,7 @@ export default function Contact() {
               className={`flex-1 transform transition-all duration-1000 ease-out
                 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}
             >
-              <h2 className="font-heading font-bold text-3xl text-black/80 dark:text-white/90 mb-6 transition-colors duration-300">Contact Details</h2>
+              <h2 className="font-heading font-bold text-3xl text-black/80 dark:text-white/90 mb-6 transition-colors duration-300">Contact</h2>
               <p className="font-sans text-gray-800 dark:text-gray-300 leading-relaxed text-justify transition-colors duration-300">
                 The Myanmar Student Association (MSA) aims to foster a vibrant and supportive community for Myanmar students at UTS,
                 promoting cultural awareness and unity among its members. MSA serves as a platform for students to connect, celebrate

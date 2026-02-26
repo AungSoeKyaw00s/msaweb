@@ -8,10 +8,12 @@ import Activatelogo from './svg/Activatelogo' // Replace with your actual SVG co
 // Update interface to handle both SVG component and image path
 interface Sponsor {
   name: string
-  logo: string | React.ComponentType // This allows the logo to be either a string path or a component
+  logo: string | React.ComponentType
   description: string
   website: string
-  isSVG?: boolean // Flag to determine if the logo is an SVG component
+  isSVG?: boolean
+  location?: string
+  benefits?: string[]
 }
 
 // Split sponsors into Present and Previous for the tabbed UI
@@ -24,11 +26,40 @@ const presentSponsors: Sponsor[] = [
     isSVG: true
   },
   {
-    name: 'Sun\'s Burmese Kitchen',
-    logo: '/sun.png',
-    description: 'Sun\'s Burmese Kitchen in Sydney offers authentic Burmese cuisine and supports the UTS Myanmar Student Society with discounts, providing an affordable spot for students to connect and enjoy traditional meals.',
-    website: 'https://www.sunsburmesekitchen.com.au',
-    isSVG: false
+    name: 'Dizzy Bird',
+    logo: '/db.png',
+    description: 'A vibrant café and bar in Chippendale known for its eclectic atmosphere and creative menu — a great spot to hang out between classes.',
+    website: 'https://www.dizzybirdsydney.com/',
+    isSVG: false,
+    location: '4 Central Park Ave, Chippendale NSW 2008',
+    benefits: ['20% discount']
+  },
+  {
+    name: 'Wave',
+    logo: '/wave.png',
+    description: "Sydney's premier nightclub in the heart of Haymarket, offering unforgettable nights out with great music and atmosphere.",
+    website: 'https://wavesydney.com/',
+    isSVG: false,
+    location: '396 Pitt St, Haymarket NSW 2000',
+    benefits: ['Free entry before midnight', '2 champagne bottles with any table booking']
+  },
+  {
+    name: 'Blue Heaven',
+    logo: '/bh.png',
+    description: 'An authentic Burmese restaurant in Hurstville serving traditional home-style flavours in a warm and welcoming setting.',
+    website: 'https://www.instagram.com/blueheaven_hurstville?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
+    isSVG: false,
+    location: '238 Forest Road, Hurstville NSW 2220',
+    benefits: ['10% discount (cash payment)', '5% discount (card payment)']
+  },
+  {
+    name: 'Golden Mandalay',
+    logo: '/gm.png',
+    description: 'Your go-to Myanmar grocery store in Auburn, stocking a wide range of authentic ingredients available for retail and wholesale.',
+    website: 'https://goldenmandalay.com.au/',
+    isSVG: false,
+    location: '2/2 Melissa St, Auburn NSW 2144',
+    benefits: ['5% discount']
   }
 ]
 
@@ -39,17 +70,24 @@ const previousSponsors: Sponsor[] = [
     description: 'TikTok Now connects UTS Myanmar students through creating a vibrant virtual community that strengthens the Myanmar Student Society\'s bonds beyond campus events while studying abroad in Sydney.',
     website: 'https://now.tiktok.com',
     isSVG: false
+  },
+  {
+    name: 'Sun\'s Burmese Kitchen',
+    logo: '/sun.png',
+    description: 'Sun\'s Burmese Kitchen supports the UTS Myanmar Student Society with discounts',
+    website: 'https://www.sunsburmesekitchen.com.au',
+    isSVG: false
   }
 ]
 
 // Create a component to render either SVG or Image
-const LogoRenderer: React.FC<{ sponsor: Sponsor }> = ({ sponsor }) => {
+const LogoRenderer: React.FC<{ sponsor: Sponsor; compact?: boolean }> = ({ sponsor, compact }) => {
   if (sponsor.isSVG) {
     const SVGComponent = sponsor.logo as React.ComponentType
     return (
-      <div className="h-20 lg:h-28 w-full flex items-center justify-center mb-4">
-        <div className='bg-gradient-to-br from-gray-900 to-black dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-inner transition-all duration-300 group-hover:shadow-lg'>
-          <div className="w-36 lg:w-44 transition-transform duration-300 group-hover:scale-105">
+      <div className={`${compact ? 'h-14' : 'h-20 lg:h-28'} w-full flex items-center justify-center mb-3`}>
+        <div className='bg-gradient-to-br from-gray-900 to-black dark:from-gray-800 dark:to-gray-900 p-4 rounded-xl shadow-inner transition-all duration-300 group-hover:shadow-lg'>
+          <div className={`${compact ? 'w-24' : 'w-36 lg:w-44'} transition-transform duration-300 group-hover:scale-105`}>
             <SVGComponent />
           </div>
         </div>
@@ -58,15 +96,15 @@ const LogoRenderer: React.FC<{ sponsor: Sponsor }> = ({ sponsor }) => {
   }
 
   return (
-    <div className="relative h-20 lg:h-28 w-full mb-4">
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-xl flex items-center justify-center p-4">
+    <div className={`relative ${compact ? 'h-14' : 'h-20 lg:h-28'} w-full mb-3`}>
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-xl flex items-center justify-center p-3">
         <div className="relative w-full h-full">
           <Image
             src={sponsor.logo as string}
             alt={`${sponsor.name} logo`}
             fill
             className="object-contain transition-transform duration-300 group-hover:scale-110"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
       </div>
@@ -167,16 +205,52 @@ export default function Sponsors() {
             const activeSponsors = activeTab === 'present' ? presentSponsors : previousSponsors
 
             return (
-              <div className={`w-full mb-12 lg:mb-16 transition-all duration-500 ${
-                activeTab === 'present' ? 'animate-in' : 'animate-in'
-              }`}>
-                {/* Grid layout that adapts based on number of sponsors */}
-                <div className={`grid gap-8 lg:gap-10 w-full ${
+              <div className="w-full mb-12 lg:mb-16 transition-all duration-500">
+                {/* Mobile: minimal logo grid */}
+                <div className="grid grid-cols-3 gap-4 md:hidden">
+                  {activeSponsors.map((sponsor, index) => (
+                    <a
+                      key={sponsor.name}
+                      href={sponsor.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex items-center justify-center rounded-2xl p-3 aspect-square shadow-sm
+                        transition-all duration-300 active:scale-90
+                        ${sponsor.isSVG ? 'bg-gray-900' : 'bg-white'}
+                        ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+                      style={{ transitionDelay: `${index * 80}ms` }}
+                    >
+                      {sponsor.isSVG ? (
+                        (() => {
+                          const SVGComponent = sponsor.logo as React.ComponentType
+                          return (
+                            <div className="w-full flex items-center justify-center">
+                              <SVGComponent />
+                            </div>
+                          )
+                        })()
+                      ) : (
+                        <div className="relative w-full h-full">
+                          <Image
+                            src={sponsor.logo as string}
+                            alt={sponsor.name}
+                            fill
+                            className="object-contain"
+                            sizes="33vw"
+                          />
+                        </div>
+                      )}
+                    </a>
+                  ))}
+                </div>
+
+                {/* Desktop: full detail cards */}
+                <div className={`hidden md:grid gap-8 lg:gap-10 w-full ${
                   activeSponsors.length === 1
                     ? 'grid-cols-1 max-w-2xl mx-auto'
                     : activeSponsors.length === 2
-                    ? 'grid-cols-1 md:grid-cols-2'
-                    : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+                    ? 'md:grid-cols-2'
+                    : 'md:grid-cols-2 lg:grid-cols-3'
                 }`}>
                   {activeSponsors.map((sponsor, index) => (
                     <div
@@ -185,26 +259,47 @@ export default function Sponsors() {
                         backdrop-blur-sm p-8 lg:p-10 rounded-3xl shadow-2xl transform transition-all duration-700 ease-out
                         hover:scale-[1.03] hover:shadow-3xl hover:shadow-red-500/20 border border-white/50 dark:border-gray-800
                         ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-                      style={{
-                        transitionDelay: `${index * 150}ms`
-                      }}
+                      style={{ transitionDelay: `${index * 150}ms` }}
                     >
-                      {/* Decorative corner accent */}
                       <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-red-500/20 to-transparent rounded-bl-full"></div>
 
                       <div className="relative flex flex-col items-center">
                         <LogoRenderer sponsor={sponsor} />
 
-                        {/* Divider with gradient */}
                         <div className="w-full h-px bg-gradient-to-r from-transparent via-red-300 dark:via-red-700 to-transparent mb-6"></div>
 
                         <h3 className="font-heading text-xl lg:text-2xl font-bold bg-gradient-to-r from-red-600 to-red-500 dark:from-red-500 dark:to-red-400 bg-clip-text text-transparent mb-4 text-center">
                           {sponsor.name}
                         </h3>
 
-                        <p className="font-sans text-gray-700 dark:text-gray-300 text-center text-sm lg:text-base mb-6 leading-relaxed">
+                        <p className="font-sans text-gray-700 dark:text-gray-300 text-center text-sm lg:text-base mb-4 leading-relaxed">
                           {sponsor.description}
                         </p>
+
+                        {sponsor.location && (
+                          <p className="font-sans text-gray-500 dark:text-gray-400 text-center text-xs lg:text-sm mb-4 flex items-center justify-center gap-1.5">
+                            <svg className="w-3.5 h-3.5 shrink-0 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            {sponsor.location}
+                          </p>
+                        )}
+
+                        {sponsor.benefits && sponsor.benefits.length > 0 && (
+                          <div className="w-full mb-6">
+                            <p className="font-sans text-xs font-semibold text-gray-500 dark:text-gray-400 text-center uppercase tracking-wide mb-2">
+                              Show digital membership for:
+                            </p>
+                            <ul className="space-y-1">
+                              {sponsor.benefits.map((benefit, i) => (
+                                <li key={i} className="flex items-center justify-center gap-2 text-sm font-sans text-gray-700 dark:text-gray-300">
+                                  <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
+                                  {benefit}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
 
                         <a
                           href={sponsor.website}
