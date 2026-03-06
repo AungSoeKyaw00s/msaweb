@@ -217,13 +217,12 @@ export default function Sponsors() {
                       style={{ transitionDelay: `${index * 80}ms` }}
                     >
                       {/* Logo tile */}
-                      <div className={`w-full aspect-square flex items-center justify-center rounded-2xl p-3 shadow-sm
-                        ${sponsor.isSVG ? 'bg-gray-900' : 'bg-white'}`}>
+                      <div className="w-full aspect-square flex items-center justify-center rounded-2xl p-3 shadow-sm bg-white">
                         {sponsor.isSVG ? (
                           (() => {
                             const SVGComponent = sponsor.logo as React.ComponentType
                             return (
-                              <div className="w-full flex items-center justify-center">
+                              <div className="w-full px-1 flex items-center justify-center invert">
                                 <SVGComponent />
                               </div>
                             )
